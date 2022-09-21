@@ -17,15 +17,15 @@ const SingleItem = ({id,name,price,imgUrl}:StoreItemsProps) => {
     const quantity = getItemQuantity(id)
 
   return (
-    <div className='flex flex-col justify-center items-center '>
-        <img src={imgUrl} alt={name} className="w-[450px] h-[250px] object-cover hover:opacity-70"/>
-        <div className=" flex justify-between items-center w-[450px] text-xl p-2 bg-yellow-100 font-bold">
+    <div className='flex flex-col justify-center items-center'>
+        <img src={imgUrl} alt={name} className="w-full max-w-[444.438px]  h-[250px] object-cover hover:opacity-70"/>
+        <div className=" flex justify-between items-center text-xl p-2 bg-yellow-100 font-bold w-full max-w-[444.438px]">
             <p className='text-gray-700'>{name}</p>
             <p className='text-gray-700'>{formatCurrency(price)}</p>
         </div>
         {
             !quantity ? (
-                <div className='bg-yellow-100 w-[450px] text-center pb-2'>
+                <div className='bg-yellow-100  text-center pb-2 w-full max-w-[444.438px]'>
                     <button className='bg-cyan-400 py-1 px-12 rounded-lg font-serif font-semibold text-gray-800 hover:bg-blue-600 hover:text-white' 
                     onClick={()=>increaseCartQuantity(id)} >Add To Cart</button>
                 </div>

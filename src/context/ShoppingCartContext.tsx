@@ -1,6 +1,7 @@
 import { createContext,useContext,ReactNode } from "react"
 import {useState} from "react"
 import ShoppingCart from "../components/ShoppingCart"
+import {useLocalStorage} from "../utils/useLocalStorage"
 
 
 type ShoppingCartProviderProps={
@@ -29,12 +30,11 @@ export const useShoppingCartContext=()=>{
 }
 
 const ShoppingCartProvider = ({children}:ShoppingCartProviderProps) => {
-    const [cartItems,setCartItems]=useState<CartItem[]>([])
     const [isOpen, setIsOpen] = useState(false)
-    // const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
-    //   "shopping-cart",
-    //   []
-    // )
+    const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+      "shopping-cart",
+      []
+    )
 
     const getItemQuantity = (id:number)=>{
         return cartItems.find((item)=>item.id ===id)?.quantity || 0
@@ -47,7 +47,7 @@ const ShoppingCartProvider = ({children}:ShoppingCartProviderProps) => {
                     return [...currentItems,{id,quantity:1}]
                 }else{
                     return currentItems.map((item)=>{
-                        if(item.id==id){
+                        if(item.id==id && item.quantity<10){
                             return {...item,quantity:item.quantity++}
                         }else{
                             return item
@@ -60,7 +60,7 @@ const ShoppingCartProvider = ({children}:ShoppingCartProviderProps) => {
     const decreaseCartQuantity = (id:number)=>{
         setCartItems(
             currentItems =>{
-                if(currentItems.find((item)=>item.id ===id)?.quantity===1){
+                if(currentItems.find((item)=>item.id ===id)?.quantity===0){
                     return currentItems.filter((item)=>item.id !==id)
                 }else{
                     return currentItems.map((item)=>{

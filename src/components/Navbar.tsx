@@ -1,12 +1,15 @@
 import {Link} from "react-router-dom"
 import {FaShoppingCart} from "react-icons/fa"
 import { useShoppingCartContext } from "../context/ShoppingCartContext"
+import ShoppingCart from "./ShoppingCart"
 
 const Navbar = () => {
   const {openCart,cartQuantity}=useShoppingCartContext()
 
+ 
+
   return (
-    <nav className="flex justify-between items-center p-6">
+    <nav className="flex justify-between items-center p-6 sticky top-0 bg-white z-50">
         <div className="text-2xl font-bold flex gap-x-5 text-cyan-700">
             <Link to="/" className="hover:opacity-70">Home</Link>
             <Link to="/store" className="hover:opacity-70">Store</Link>

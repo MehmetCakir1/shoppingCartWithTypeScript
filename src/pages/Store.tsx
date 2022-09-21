@@ -7,7 +7,7 @@ const Store = () => {
   // console.log(data);
   // console.log(store)
   return (
-    <div className="grid lg:grid-cols-2 gap-y-9 justify-center items-center container m-auto mt-9">
+    <div className="grid lg:grid-cols-2 gap-y-9 justify-center items-center container m-auto mt-9 pb-9">
       {store?.map((item)=>{
         return(
           <SingleItem key={item.id} {...item}/>
