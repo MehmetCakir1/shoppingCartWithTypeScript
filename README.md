@@ -1,4 +1,4 @@
-[Click here to see the project](https://shopping-cart-with-type-script.vercel.app/store)
+[Click here to see the project](https://shopping-cart-with-type-script.vercel.app)
 
 - __React__<br/>
 - __TypeScript__<br/>
